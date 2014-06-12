@@ -1,0 +1,5 @@
+*.pyc
+*.mo
+*.sqlite3
+django_test24/settings_local.py
+venv

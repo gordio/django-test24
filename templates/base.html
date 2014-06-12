@@ -1,0 +1,40 @@
+{% load i18n staticfiles compressed %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}Django Test 24{% endblock title %}</title>
+
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  {# Use {{ block.super }} in relative templates #}
+  {% block head %}
+  {% compressed_css 'main' %}
+  {% endblock head %}
+</head>
+<body>
+  <header>
+    <a href="/">
+      <h1 class="logo">Django Test 42</h1>
+    </a>
+  </header>
+
+  {# Django messages framework #}
+  {% if messages %}
+  <section class="messages">
+    {% for message in messages %}
+    <div class="message{% if message.tags %} {{ message.tags }}{% endif %}">
+      {{ message }}
+    </div>
+    {% endfor %}
+  </section>
+  {% endif %}
+
+  <section id="content">
+    {% block content %}
+    {% endblock content %}
+  </section>
+</body>
+</html>
